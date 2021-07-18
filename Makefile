@@ -1,6 +1,6 @@
 NAME := trojan-go
 PACKAGE_NAME := github.com/p4gefau1t/trojan-go
-VERSION := `git describe --dirty`
+VERSION := "v0.10.4"
 COMMIT := `git rev-parse HEAD`
 
 PLATFORM := linux
@@ -17,14 +17,14 @@ clean:
 	rm -f *.dat
 
 geoip.dat:
-	wget https://github.com/v2fly/geoip/raw/release/geoip.dat
+	wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
 
 geosite.dat:
-	wget https://github.com/v2fly/domain-list-community/raw/release/dlc.dat -O geosite.dat
+	wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
 
 test:
 	# Disable Bloomfilter when testing
-	SHADOWSOCKS_SF_CAPACITY="-1" $(GO_DIR)go test -v ./...
+	SHADOWSOCKS_SF_CAPACITY="-1" $(GO_DIR)go test -timeout 20m -v ./...
 
 trojan-go:
 	mkdir -p $(BUILD_DIR)
