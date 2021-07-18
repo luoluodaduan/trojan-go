@@ -1,22 +1,8 @@
 name: Linter
-
 on:
   push:
     branches:
-      - master
-    paths:
-      - "**/*.go"
-      - ".github/workflows/linter.yml"
-      - ".github/linters/.golangci.yml"
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - master
-    paths:
-      - "**/*.go"
-      - ".github/workflows/linter.yml"
-      - ".github/linters/.golangci.yml"
-
+      - test
 jobs:
   lint:
     runs-on: ubuntu-latest

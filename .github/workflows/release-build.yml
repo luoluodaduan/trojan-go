@@ -1,39 +1,29 @@
+name: Trojan-Go Build
 on:
-  push:
-    tags:
-      - "v*.*.*"
-name: release-build
+  watch:
+    types: [started]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ubuntu-latest, windows-latest]
+        go-version: [1.16.x]
+    runs-on: ${{ matrix.platform }}
     steps:
-      - name: Install Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: "1.16"
-
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Checkout tag
-        run: |
-          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-          tag_name="${GITHUB_REF##*/}"
-          echo Tag $tag_name
-          git checkout $tag_name
-          echo "TAG_NAME=${tag_name}" >> $GITHUB_ENV
-
-      - name: Build
-        run: |
-          make geosite.dat geoip.dat
-          make release -j$(nproc)
-
-      - name: Release
-        uses: softprops/action-gh-release@v1
+      - name: Setup Go
+        uses: actions/setup-go@v2
         with:
-          draft: true
-          name: ${{ env.TAG_NAME }}
-          tag_name: ${{ env.TAG_NAME }}
-          files: ./trojan-go-*.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          go-version: ${{ matrix.go-version }}
+
+      - name: Build Trojan-Go
+        run: make
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Trojan-Go-${{ matrix.platform }}
+          path: build/

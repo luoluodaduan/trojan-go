@@ -1,12 +1,7 @@
 on:
   push:
     branches:
-      - master
-    paths-ignore:
-      - "**.md"
-      - "docs/**"
-    tags:
-      - "v*.*.*"
+      - test
 name: docker-build
 jobs:
   build:

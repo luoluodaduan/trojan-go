@@ -1,17 +1,7 @@
 on:
   push:
     branches:
-      - master
-    paths:
-      - "docs/**"
-      - ".github/workflows/gh-pages.yml"
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - master
-    paths:
-      - "docs/**"
-      - ".github/workflows/gh-pages.yml"
+      - test
 name: github-pages
 jobs:
   deploy:

@@ -1,23 +1,7 @@
 on:
   push:
     branches:
-      - master
-    paths:
-      - "**/*.go"
-      - "go.mod"
-      - "go.sum"
-      - "Makefile"
-      - ".github/workflows/nightly-build.yml"
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - master
-    paths:
-      - "**/*.go"
-      - "go.mod"
-      - "go.sum"
-      - "Makefile"
-      - ".github/workflows/nightly-build.yml"
+      - test
 name: nightly-build
 jobs:
   build:
