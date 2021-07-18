@@ -16,7 +16,7 @@ require (
 	github.com/shadowsocks/go-shadowsocks2 v0.1.5
 	github.com/smartystreets/assertions v1.2.0 // indirect
 	github.com/smartystreets/goconvey v1.6.4
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.6.1
 	github.com/txthinking/runnergroup v0.0.0-20210326110939-37fc67d0da7c // indirect
 	github.com/txthinking/socks5 v0.0.0-20210326104807-61b5745ff346
 	github.com/txthinking/x v0.0.0-20210326105829-476fab902fbe // indirect
