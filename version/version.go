@@ -28,11 +28,9 @@ func (c *versionOption) Handle() error {
 		fmt.Println("Go Version:", runtime.Version())
 		fmt.Println("OS/Arch:", runtime.GOOS+"/"+runtime.GOARCH)
 		fmt.Println("Git Commit:", constant.Commit)
-		fmt.Println("")
 		fmt.Println("Developed by PageFault (p4gefau1t)")
 		fmt.Println("Licensed under GNU General Public License version 3")
 		fmt.Println("GitHub Repository:\thttps://github.com/p4gefau1t/trojan-go")
-		fmt.Println("Trojan-Go Documents:\thttps://p4gefau1t.github.io/trojan-go/")
 		return nil
 	}
 	return common.NewError("not set")
